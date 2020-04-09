@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+    <mods>
+		<li>Combat Extended</li>
+    </mods>
+		<match Class="PatchOperationSequence">
+		<success>Always</success>
+		 <operations>
+		 
+		 
+		<!-- Add Shell Recipes -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs</xpath>
+				<value>
+					  <RecipeDef ParentName="AmmoRecipeBase">
+						<defName>MakeShell_155mmHowitzer</defName>
+						<label>make a 155mm howitzer artillery shell</label>
+						<description>make a 155mm howitzer artillery shell.</description>
+						<jobString>Making a 155mm howitzer artillery shell.</jobString>
+						<ingredients>
+						  <li>
+							<filter>
+							  <thingDefs>
+								<li>Steel</li>
+							  </thingDefs>
+							</filter>
+							<count>300</count>
+						  </li>
+						  <li>
+							<filter>
+							  <thingDefs>
+								<li>ComponentIndustrial</li>
+							  </thingDefs>
+							</filter>
+							<count>2</count>
+						  </li>
+						  <li>
+							<filter>
+							  <thingDefs>
+								<li>FSX</li>
+							  </thingDefs>
+							</filter>
+							<count>25</count>
+						  </li>
+						</ingredients>
+						<fixedIngredientFilter>
+						  <thingDefs>
+							<li>Steel</li>
+							<li>ComponentIndustrial</li>
+							<li>FSX</li>
+						  </thingDefs>
+						</fixedIngredientFilter>
+						<products>
+						  <Shell_155mm_Howitzer>1</Shell_155mm_Howitzer>
+						</products>
+					  </RecipeDef>
+					</value>
+				</li>
+		
+			<!-- Add Shells to AmmoSet -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_155mmHowitzerShell"]/ammoTypes</xpath>
+				<value>
+				<Shell_155mm_Howitzer>Bullet_155mmHowitzer</Shell_155mm_Howitzer>		
+				</value>
+			</li>
+			
+			<!-- Add CE Ammo.Def to Shells & Ammo-->
+			<li Class="PatchOperationAttributeAdd">
+				<xpath>Defs/ThingDef[defName="Shell_155mm_Howitzer"]</xpath>
+				<attribute>Class</attribute>
+				<value>CombatExtended.AmmoDef</value>
+			</li>
+
+			<!-- Add New Shell Base-->
+			<li Class="PatchOperationAttributeSet">
+				<xpath>Defs/ThingDef[defName="Shell_155mm_Howitzer"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>155mmHowitzerShellBase</value>
+			</li>
+
+			 <!-- Remove Stuff -->
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="Bullet_155mmHowitzer"]/projectileWhenLoaded</xpath>
+			</li> 
+
+			<!-- Add Shell Mass and Tradability-->
+				<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="Shell_155mm_Howitzer"]</xpath>
+				<value>
+				<statBases>
+					<Mass>12.0</Mass>
+					<Bulk>9.5</Bulk>	
+				</statBases>					
+				</value>
+			</li>
+
+			<!-- Add Shell Ammo Type-->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="Shell_155mm_Howitzer"]</xpath>
+				<value>
+					<ammoClass>GrenadeHE</ammoClass>				
+				</value>
+			</li>	
+			
+			<!-- Add CE Explosives Comps to Shells -->			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Shell_155mm_Howitzer"]/comps</xpath>
+				<value>
+				<comps>	
+					<li Class="CombatExtended.CompProperties_Fragments">
+						<fragments>
+							<Fragment_Large>138</Fragment_Large>
+							<Fragment_Small>812</Fragment_Small>
+						</fragments>
+					</li>				
+				  <li Class="CompProperties_Explosive">
+					<explosiveRadius>6.6</explosiveRadius>
+					<explosiveDamageType>Bomb</explosiveDamageType>
+					<explosiveExpandPerStackcount>0</explosiveExpandPerStackcount>
+					<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+					<postExplosionSpawnThingDef>Filth_Fuel</postExplosionSpawnThingDef>
+					<postExplosionSpawnChance>1.0</postExplosionSpawnChance>
+					<wickTicks>
+					  <min>20</min>
+					  <max>60</max>
+					</wickTicks>
+				  </li>
+				</comps>				  
+				</value>
+			</li>
+
+			
+			<!-- Add New Bullet Base-->
+			<li Class="PatchOperationAttributeSet">
+				<xpath>Defs/ThingDef[defName="Bullet_155mmHowitzer"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>Base155mmHowitzerShell</value>
+			</li>
+			
+			<!-- Projectiles -->		
+			<li Class="PatchOperationAttributeAdd">
+				<xpath>Defs/ThingDef[defName="Bullet_155mmHowitzer"]/projectile</xpath>
+				<attribute>Class</attribute>
+				<value>CombatExtended.ProjectilePropertiesCE</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Bullet_155mmHowitzer"]/thingClass</xpath>
+				<value>
+				    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+				</value>
+			</li>
+
+		</operations>
+		</match>
+	</Operation>
+</Patch>

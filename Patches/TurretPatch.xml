@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+    <mods>
+		<li>Combat Extended</li>
+    </mods>
+		<match Class="PatchOperationSequence">
+		 <operations>
+
+			<!-- ========== FH70 Howitzer ========== -->
+
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>FH70_Howitzer</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>2.59</RangedWeapon_Cooldown>
+					<SightsEfficiency>1.00</SightsEfficiency>
+					<ShotSpread>0.01</ShotSpread>
+					<SwayFactor>10.38</SwayFactor>
+				</statBases>
+				<Properties>
+					<verbClass>CombatExtended.Verb_ShootMortarCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_155mmHowitzer</defaultProjectile>
+					<warmupTime>4.3</warmupTime>
+					<range>900</range>
+					<minRange>28</minRange>
+					<requireLineOfSight>false</requireLineOfSight>
+					<soundCast>Mortar_LaunchA</soundCast>
+					<muzzleFlashScale>16</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>true</canTargetLocations>
+					</targetParams>
+				</Properties>
+				<AmmoUser>
+					<magazineSize>1</magazineSize>
+					<reloadTime>9.8</reloadTime>
+					<ammoSet>AmmoSet_155mmHowitzerShell</ammoSet>
+				</AmmoUser>
+				<FireModes>
+					<aiUseBurstMode>FALSE</aiUseBurstMode>
+					<aiAimMode>AimedShot</aiAimMode>
+				</FireModes>
+				<weaponTags>
+					<li>TurretGun</li>
+				</weaponTags>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/statBases/WorkToBuild</xpath>
+				<value>
+					<WorkToBuild>15000</WorkToBuild>
+				</value>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/costList</xpath>
+				<value>
+					<costList>
+						<Steel>1000</Steel>
+						<ComponentIndustrial>8</ComponentIndustrial>
+					</costList>
+				</value>
+			</li>
+
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/statBases</xpath>
+				<value>
+					<ShootingAccuracyTurret>0.999</ShootingAccuracyTurret>
+					<AimingAccuracy>1.0</AimingAccuracy>
+				</value>
+			</li>
+
+
+			<!-- ========== Common to all Turrets ========== -->
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[
+					@Name="TC_BaseArtilleryBuilding" or
+					@Name="TC_BaseAutoBuilding" or
+					@Name="TC_BaseMannedBuilding"
+				]/thingClass</xpath>
+				<value>
+					<thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+				</value>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[
+					@Name="TC_BaseArtilleryBuilding" or
+					@Name="TC_BaseAutoBuilding" or
+					@Name="TC_BaseMannedBuilding"
+				]/fillPercent</xpath>
+				<value>
+					<fillPercent>0.85</fillPercent>
+				</value>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/comps/li[@Class = "CompProperties_Explosive"]</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/inspectorTabs</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer"]/comps/li[@Class = "CompProperties_ChangeableProjectile"]</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="FH70_Howitzer_Artillery"]/building</xpath>
+			</li>
+
+		</operations>
+		</match>
+	</Operation>
+</Patch>
