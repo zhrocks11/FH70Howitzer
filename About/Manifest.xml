@@ -5,18 +5,14 @@
     <dependencies>
     </dependencies>
     <incompatibleWith>
-        <li>1508165821</li> <!-- [XND] Targeting Modes -->
     </incompatibleWith>
     <loadBefore>
     </loadBefore>
     <loadAfter>
     </loadAfter>
     <suggests>
-		<li>CombatExtended</li> <!-- CE -->
-        <li>CombatExtendedGuns</li> <!-- CE Guns -->
-        <li>CombatExtendedMelee</li> <!-- CE Melee -->
     </suggests>
     <showCrossPromotions>true</showCrossPromotions>
-    <manifestUri>https://raw.githubusercontent.com/CombatExtendedRWMod/CombatExtended/master/About/Manifest.xml</manifestUri>
-    <downloadUri>https://github.com/CombatExtendedRWMod/CombatExtended/releases/latest</downloadUri>
+    <manifestUri>https://raw.githubusercontent.com/zhrocks11/FH70Howitzer/master/About/Manifest.xml</manifestUri>
+    <downloadUri>https://github.com/zhrocks11/FH70Howitzer/releases/latest</downloadUri>
 </Manifest>
