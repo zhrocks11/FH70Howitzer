@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>FH70 Howitzer Artillery System</name>
+	<author>zhrocks11</author>
+	<url></url>
+	<supportedVersions>
+		<li>1.1</li>
+	</supportedVersions>
+	<packageId>zhrocks11.FH70Howitzer</packageId>
+	<description>Adds a FH70 Howitzer and 155mm Mortar shell As an addtional Mortar system allowing for maximum damage! </description>
+	<modDependencies>
+  </modDependencies>
+  <incompatibleWith>
+  </incompatibleWith>	  
+  <loadAfter>
+	<li>brrainz.harmony</li>
+  </loadAfter>
+</ModMetaData>
